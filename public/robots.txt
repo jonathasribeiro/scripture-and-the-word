@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://scripture-and-the-word.netlify.app/sitemap.xml

@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-parchment: #F3EBDD;
+  --color-ink: #241C17;
+  --color-gold: #A98143;
+  --color-wine: #6B2D31;
+  --color-manuscript: #344E41;
+  --color-beige: #DED1B8;
+  --color-graphite: #2E2A26;
+  --color-cream: #FAF7F0;
+  --color-dark-bg: #1A1512;
+  --color-dark-surface: #241C17;
+  --color-dark-card: #2E2A26;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-biblical: "Noto Serif", "Noto Serif Hebrew", "Noto Serif", serif;
+  --font-quote: "EB Garamond", Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-parchment text-graphite font-body antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(169, 129, 67, 0.08), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(107, 45, 49, 0.06), transparent 45%);
+    min-height: 100vh;
+  }
+
+  .dark body,
+  .dark {
+    @apply bg-dark-bg text-cream;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(169, 129, 67, 0.12), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(107, 45, 49, 0.15), transparent 45%);
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-ink dark:text-cream;
+  }
+
+  .greek, .hebrew {
+    @apply font-biblical;
+  }
+
+  .hebrew {
+    direction: rtl;
+    unicode-bidi: isolate;
+  }
+
+  .quote-text {
+    @apply font-quote italic;
+  }
+
+  .drop-cap::first-letter {
+    @apply font-display float-left text-5xl leading-none text-wine pr-2 pt-1;
+  }
+
+  ::selection {
+    @apply bg-gold/40 text-ink;
+  }
+}
+
+@layer components {
+  .ornament-line {
+    @apply h-px w-full max-w-xs mx-auto;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  }
+
+  .manuscript-card {
+    @apply rounded-sm border border-beige/80 bg-cream/80 dark:bg-dark-card dark:border-graphite
+      shadow-[0_1px_0_rgba(169,129,67,0.25)] transition-all duration-300
+      hover:shadow-[0_8px_24px_rgba(36,28,23,0.12)] hover:border-gold/50;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-wine text-cream font-medium
+      rounded-sm hover:bg-wine/90 transition-colors focus-visible:outline focus-visible:outline-2
+      focus-visible:outline-offset-2 focus-visible:outline-gold;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 border border-gold text-ink dark:text-cream
+      rounded-sm hover:bg-gold/15 transition-colors focus-visible:outline focus-visible:outline-2
+      focus-visible:outline-offset-2 focus-visible:outline-gold;
+  }
+
+  .section-pad {
+    @apply px-4 sm:px-6 lg:px-8 py-12 md:py-16;
+  }
+
+  .prose-academic {
+    @apply text-base leading-relaxed text-graphite/90 dark:text-cream/85;
+  }
+
+  .skeleton {
+    @apply animate-pulse bg-beige/70 dark:bg-graphite/60 rounded-sm;
+  }
+}
+
+@media print {
+  header, footer, .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+.reading-mode main {
+  max-width: 42rem;
+  margin-inline: auto;
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.presentation-mode {
+  font-size: 1.25rem;
+}
+
+.presentation-mode h1 {
+  font-size: 3rem;
+}
+
+.presentation-mode h2 {
+  font-size: 2.25rem;
+}
