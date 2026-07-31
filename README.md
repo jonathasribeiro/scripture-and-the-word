@@ -2,6 +2,11 @@
 
 **Português** | **English** below.
 
+## Links
+
+- **Site (Netlify):** https://scripture-and-the-word.netlify.app
+- **Repositório:** https://github.com/jonathasribeiro/scripture-and-the-word
+
 ## Objetivo / Aim
 
 Aplicação web acadêmica, bilíngue (pt-BR / en-US), que investiga a relação entre Jesus Cristo como Logos eterno e as Escrituras inspiradas.
@@ -62,10 +67,9 @@ Edite `src/data/canons.ts` (`canonTraditions`, `canonBooks`) e `src/data/deutero
 
 ## Publicar no Netlify
 
-1. Conecte o repositório ou faça drag-and-drop da pasta `dist` após `npm run build`.
-2. Build command: `npm run build`
-3. Publish directory: `dist`
-4. O arquivo `netlify.toml` e `public/_redirects` já configuram SPA redirects.
+Build command: `npm run build` · Publish directory: `dist` · Ver `netlify.toml`.
+
+Site em produção: https://scripture-and-the-word.netlify.app
 
 ## Aviso acadêmico
 
@@ -74,6 +78,10 @@ Este projeto é confessante e documental. Citações e datas devem ser verificad
 ---
 
 ## English
+
+### Live site
+
+https://scripture-and-the-word.netlify.app
 
 ### Local run
 
